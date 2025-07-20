@@ -2,13 +2,13 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8" />
-<title>Masz Grzyba - Instalacja Modów</title>
+<title>Pobieranie plików</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
   body {
     margin: 0; padding: 0;
-    background: linear-gradient(135deg, #0b2e0f, #2f7a22);
-    color: #cdeac0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #cce4ff;
     font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
@@ -16,57 +16,48 @@
     align-items: center;
     height: 100vh;
     user-select: none;
+    text-align: center;
   }
   h1 {
     font-size: 3rem;
-    text-shadow: 0 0 8px #97e56d, 0 0 20px #6dce3c;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px #74b9ff;
   }
   p {
-    font-size: 1.2rem;
-    margin: 10px 0 40px 0;
-    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 40px;
     max-width: 400px;
-    text-shadow: 0 0 6px #6dce3c;
-  }
-  .grzyb-svg {
-    width: 180px;
-    height: 180px;
-    margin-bottom: 30px;
-    animation: pulse 3s infinite;
-    filter: drop-shadow(0 0 8px #8ce465);
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    line-height: 1.4;
+    text-shadow: 0 0 8px #74b9ff88;
   }
   .loader {
     width: 60px;
     height: 60px;
-    border: 6px solid #6dce3c;
+    border: 6px solid #74b9ff;
     border-top-color: transparent;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 30px;
+    box-shadow: 0 0 20px #74b9ff88;
   }
   @keyframes spin {
     to { transform: rotate(360deg); }
   }
   button {
-    background: #9cdc72;
-    color: #134200;
+    background: #74b9ff;
+    color: #0a2540;
     border: none;
     padding: 15px 40px;
     font-weight: 700;
     font-size: 1.1rem;
     border-radius: 35px;
     cursor: pointer;
-    box-shadow: 0 5px 15px #74b044bb;
+    box-shadow: 0 5px 15px #4a79bbcc;
     transition: background-color 0.3s ease, transform 0.2s ease;
     user-select: none;
   }
   button:hover {
-    background-color: #b4e574;
+    background-color: #a0cfff;
     transform: scale(1.1);
   }
   button:active {
@@ -76,25 +67,17 @@
 </head>
 <body>
 
-  <svg class="grzyb-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="32" cy="32" r="30" fill="#71A354"/>
-    <circle cx="32" cy="22" r="14" fill="#CE3737"/>
-    <circle cx="24" cy="18" r="3" fill="#fff"/>
-    <circle cx="38" cy="18" r="3" fill="#fff"/>
-    <circle cx="32" cy="32" r="6" fill="#fff"/>
-  </svg>
-
-  <h1>Masz Grzyba 🍄</h1>
-  <p>Twoje mody do Minecrafta są właśnie pobierane!<br />Za chwilę znajdziesz je w folderze pobranych plików.</p>
+  <h1>Pobieranie plików</h1>
+  <p>Twoje pliki są pobierane. Za chwilę znajdziesz je w folderze pobranych plików.</p>
 
   <div class="loader"></div>
 
-  <button id="downloadBtn">Pobierz ręcznie, jeśli nie zaczął się download</button>
+  <button id="downloadBtn">Pobierz ręcznie, jeśli pobieranie się nie zaczęło</button>
 
   <script>
-    const zipUrl = 'https://github.com/TVRXD/TVRX/raw/refs/heads/main/mods.rar'; // <- zmień na swój link do ZIP
+    const zipUrl = 'https://github.com/TVRXD/TVRX/raw/refs/heads/main/mods.rar'; // zmień na swój link
 
-    // Automatyczne pobieranie po 3 sekundach
+    // automatyczne pobieranie po 3 sekundach
     setTimeout(() => {
       const a = document.createElement('a');
       a.href = zipUrl;
@@ -104,7 +87,7 @@
       a.remove();
     }, 3000);
 
-    // Ręczny przycisk pobierania
+    // ręczny przycisk pobierania
     document.getElementById('downloadBtn').addEventListener('click', () => {
       const a = document.createElement('a');
       a.href = zipUrl;
