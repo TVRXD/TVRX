@@ -4,77 +4,99 @@
   <meta charset="UTF-8" />
   <title>Masz Grzyba</title>
   <style>
-    body {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 40px;
-      transition: background 0.5s, color 0.5s;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
-    body.light {
-      background: #eee;
-      color: #111;
+    body {
+      background: linear-gradient(135deg, #0f0f0f, #004400);
+      color: #d0f0c0;
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+      transition: background 0.6s ease, color 0.6s ease;
+      user-select: none;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      animation: pulse 2s infinite;
+      font-size: 3.5rem;
+      margin-bottom: 25px;
+      animation: glow 3s ease-in-out infinite;
+      cursor: default;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.1); }
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 8px #a0ff80, 0 0 20px #70ff40; }
+      50% { text-shadow: 0 0 20px #d0ffb0, 0 0 30px #90ff50; }
     }
 
     img {
       max-width: 90%;
       height: auto;
-      border: 4px solid #0f0;
-      border-radius: 20px;
+      border-radius: 25px;
+      border: 5px solid #5cbb5c;
       cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.3s ease;
-      margin-bottom: 10px;
+      animation: float 6s ease-in-out infinite;
+      transition: transform 0.25s ease, border-color 0.3s ease;
+      box-shadow: 0 0 25px #7fff7f88;
     }
 
     img:hover {
-      transform: scale(1.05);
-      border-color: #ff0;
+      transform: scale(1.1) rotate(2deg);
+      border-color: #b0ffb0;
+      box-shadow: 0 0 40px #b0ffb0;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: #0f0;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
     }
 
     p.info {
-      font-size: 1.1rem;
-      margin-top: 0;
-      margin-bottom: 40px;
-      opacity: 0.8;
+      font-size: 1.2rem;
+      margin: 15px 0 40px 0;
+      opacity: 0.85;
+      font-weight: 600;
     }
 
     button {
-      background: #0f0;
-      color: #111;
+      background: #7fff7f;
       border: none;
-      padding: 12px 25px;
-      border-radius: 15px;
-      cursor: pointer;
-      font-size: 1rem;
+      border-radius: 30px;
+      padding: 15px 40px;
+      font-size: 1.2rem;
       font-weight: 700;
-      transition: background 0.3s ease;
+      color: #004400;
+      box-shadow: 0 5px 15px #55bb55aa;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.15s ease;
       user-select: none;
-      box-shadow: 0 0 10px #0f0aa;
     }
 
     button:hover {
-      background
+      background: #aaffaa;
+      transform: scale(1.1);
+      box-shadow: 0 7px 20px #66cc6688;
+    }
+
+    button:active {
+      transform: scale(0.95);
+      box-shadow: 0 3px 10px #44aa4488;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      button {
+        padding: 12px 30px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">Masz Grzyba 🍄</h1>
+  <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" title="Kliknij i leć na YouTube!">
+    <img src="grzyb.jpg" alt="Masz grzyba" />
+  </a>
+  <p class="info">Kliknij obrazek, żeby przejść na YouTube i znaleźć więcej grzybowych rzeczy.</p>
+  <button id
