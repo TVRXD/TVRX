@@ -7,13 +7,21 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
     body {
-      background: linear-gradient(135deg, #0f0f0f, #004400);
-      color: #d0f0c0;
       font-family: 'Montserrat', sans-serif;
       text-align: center;
       padding: 50px 20px;
-      transition: background 0.6s ease, color 0.6s ease;
       user-select: none;
+      transition: background 0.6s ease, color 0.6s ease;
+    }
+
+    body.light {
+      background: linear-gradient(135deg, #0f0f0f, #004400);
+      color: #d0f0c0;
+    }
+
+    body.dark {
+      background: #111;
+      color: #eee;
     }
 
     h1 {
@@ -69,6 +77,7 @@
       cursor: pointer;
       transition: background 0.3s ease, transform 0.15s ease;
       user-select: none;
+      margin: 10px;
     }
 
     button:hover {
@@ -93,10 +102,46 @@
     }
   </style>
 </head>
-<body>
+<body class="light">
   <h1 id="title">Masz Grzyba 🍄</h1>
   <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" title="Kliknij i leć na YouTube!">
-    <img src="grzyb.jpg" alt="Masz grzyba" />
+    <img src="grzyb.png" alt="Masz grzyba" />
   </a>
   <p class="info">Kliknij obrazek, żeby przejść na YouTube i znaleźć więcej grzybowych rzeczy.</p>
-  <button id
+  
+  <button id="toggleTheme">Tryb ciemny</button>
+  <button id="downloadMods">Pobierz mody do MC</button>
+
+  <script>
+    // zmiana emoji w tytule
+    const title = document.getElementById('title');
+    const emojis = ['🍄', '🍁', '🌿', '🍃', '🌱', '🍂'];
+    let emojiIndex = 0;
+
+    setInterval(() => {
+      emojiIndex = (emojiIndex + 1) % emojis.length;
+      title.textContent = `Masz Grzyba ${emojis[emojiIndex]}`;
+    }, 2500);
+
+    // tryb jasny/ciemny
+    const btnTheme = document.getElementById('toggleTheme');
+    btnTheme.addEventListener('click', () => {
+      if (document.body.classList.contains('light')) {
+        document.body.classList.replace('light', 'dark');
+        btnTheme.textContent = 'Tryb jasny';
+      } else {
+        document.body.classList.replace('dark', 'light');
+        btnTheme.textContent = 'Tryb ciemny';
+      }
+    });
+
+    // pobieranie modów
+    const btnDownload = document.getElementById('downloadMods');
+    btnDownload.addEventListener('click', () => {
+      // zmień ten link na swój ZIP z modami w repozytorium GitHub
+      const zipUrl = 'https://github.com/TVRXD/TVRX/blob/main/mods.rar';
+      window.open(zipUrl, '_blank');
+    });
+  </script>
+</body>
+</html>
